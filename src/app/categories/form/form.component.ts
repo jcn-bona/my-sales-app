@@ -3,14 +3,15 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { Category } from '../category.dto';
 
 @Component({
   selector: 'category-form',
   standalone: true,
-  imports: [MatButtonModule, MatInputModule, ReactiveFormsModule, MatCardModule],
+  imports: [MatButtonModule, MatInputModule, ReactiveFormsModule, MatCardModule, MatIconModule],
   templateUrl: './form.component.html',
-  styles: ``,
+  styles: `.p {padding: 27px;}`,
 })
 export class CategoryFormComponent {
 
@@ -21,8 +22,8 @@ export class CategoryFormComponent {
     name: ['', [Validators.required, Validators.minLength(3)]],
     description: ['', Validators.required],
   });
-  
-  @Input() set category(category: Category) {this.categoryForm.setValue(category)}
+
+  @Input() set category(category: Category) {this.categoryForm.setValue(category)};
   @Output() save = new EventEmitter<Category>();
 
   onSubmit() {

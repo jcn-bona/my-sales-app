@@ -1,3 +1,5 @@
 export const environment = {
-    api: 'http://myawesomesite.com:5461/api/'
-};
+    production: false,
+    //api: 'https://northwind.vercel.app/api/'
+    api: 'http://localhost:3000/'
+}

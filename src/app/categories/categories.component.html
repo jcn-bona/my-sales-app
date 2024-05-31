@@ -1,15 +1,19 @@
 <mat-card>
+
   <mat-card-header>
-    <mat-card-title>Categories</mat-card-title>
-    <mat-card-subtitle>Listing all categories</mat-card-subtitle>
-    <loading-bar [visible]="showLoading"></loading-bar>
+    <mat-card-title>Categorias</mat-card-title>
+    <mat-card-subtitle>Arquivo de categorias</mat-card-subtitle>
+    <!-- <loading-bar [visible]="showLoading"></loading-bar> -->
   </mat-card-header>
-  <mat-card-actions>
+  <mat-card-actions style="display: flex; justify-content: right; padding-right: 13px;">
     <button  mat-raised-button color="primary" (click)="onNewCategoryClick()">{{ nameButton }}</button>
   </mat-card-actions>
+  <br>
+  
   @if(showForm) {
     <category-form (save)="onSave($event)" [category]="category"></category-form>
   }  
+
   <mat-card-content>
     <table mat-table class="mat-elevation-z8 " matSort aria-label="Elements">
 
@@ -29,24 +33,29 @@
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ação</th>
+        <th mat-header-cell *matHeaderCellDef>Ação</th>
         <td mat-cell *matCellDef="let row">
-        <button mat-button (click)="onEditCategoryClick(row)">Edit</button></td>
-        <button mat-icon-button color="warn" (click)="onDeleteCategoryClick(row)">
-          <mat-icon>delete</mat-icon>
-        </button>
+          <button mat-icon-button (click)="onEditCategoryClick(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="onDeleteCategoryClick(row)">
+            <mat-icon>delete</mat-icon>
+          </button>  
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
     </table>
+    <br>
     <mat-paginator
-      #Paginator
+      #paginator
       [length]="dataSource.data.length"
       [pageIndex]="0"
-      [pageSize]="7"
-      [pageSizeOptions]="[5, 7, 20]"
-      aria-label="Select page"
+      [pageSize]="6"
+      [pageSizeOptions]="[7, 14, 20]"
+      aria-label="Selecione a página"
     >
     </mat-paginator>
   </mat-card-content>
