@@ -24,8 +24,8 @@ export class MenuComponent {
 
   menuItems: Array<MenuItem> = [
     {path: '/', label: 'Home'},
-    {path: '/categories', label: 'Categories'},
-    {path: '/suppliers', label: 'Suppliers'}
+    {path: '/categorias', label: 'Categorias'},
+    {path: '/fornecedores', label: 'Fornecedores'}
   ]
 
 }
