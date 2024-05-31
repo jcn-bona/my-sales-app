@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatList, MatListModule } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 interface MenuItem {
   /**
@@ -12,10 +13,10 @@ interface MenuItem {
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [MatListModule],
+  imports: [MatListModule, RouterModule],
   template: `
     @for (item of menuItems; track item.path) {
-          <a mat-list-item [href]="item.path">{{item.label}}</a>
+          <a mat-list-item [routerLink]="item.path">{{item.label}}</a>
     }
   `,
   styles: ``
